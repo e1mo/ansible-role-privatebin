@@ -1,0 +1,34 @@
+server {
+	listen [::]:443 ssl http2;
+
+	server_name {{ ask_e1mo_de_domain }};
+	root {{ ask_e1mo_de_basedir }};
+
+	# SSL
+	ssl_certificate {{ ask_e1mo_de_nginx_ssl_certificate }};
+	ssl_certificate_key {{ ask_e1mo_de_nginx_ssl_certificate_key }};
+	
+	index index.php;
+
+	location / {
+		try_files $uri $uri/ $uri/index.php index.php;
+	}
+
+	location ~ \.php$ {
+		include fastcgi_params;
+		fastcgi_intercept_errors on;
+		fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		fastcgi_pass 127.0.0.1:9000;
+		fastcgi_index			index.php;
+		fastcgi_buffers			8 16k;
+		fastcgi_buffer_size		32k;
+
+		# fastcgi params
+		fastcgi_param DOCUMENT_ROOT		$document_root;
+		fastcgi_param PHP_ADMIN_VALUE	"open_basedir=$document_root/:/usr/lib/php/:/tmp/";
+	}
+
+	location ~ /config\.php {
+		deny all;
+	}
+}

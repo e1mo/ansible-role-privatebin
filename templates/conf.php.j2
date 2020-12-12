@@ -1,0 +1,60 @@
+;<?php http_response_code(403); /*
+
+[main]
+name = "{{ pbin_name }}"
+discussion = {{ pbin_discussion_enabled | ternary('true', 'false') }}
+password = {{ pbin_password_enabled | ternary('true', 'false') }}
+fileupload = {{ pbin_fileupload_enabled | ternary('true', 'false') }}
+sizelimit = {{ pbin_sizelimit }}
+burnafterreadingselected = {{ pbin_burn_after_reading_default | ternary('true', 'false') }}
+defaultformatter = "{{ pbin_formatter_default }}"
+template = "{{ pbin_template }}"
+languageselection = {{ pbin_language_selection | ternary('true', 'false') }}
+languagedefault = "{{ pbin_language_default }}"
+compression = "{{ pbin_compression }}"
+
+{% if pbin_syntax_theme %}
+syntaxhighlightingtheme = "{{ pbin_syntax_theme }}"
+{% endif %}
+{% if pbin_notice %}
+syntaxhighlightingtheme = "{{ pbin_notice }}"
+{% endif %}
+
+[expire]
+default = "{{ pbin_expire_default }}"
+
+[expire_options]
+{% for key, value in pbin_expire_options.items() %}
+{{ key }} = {{ value }}
+{% endfor %}
+
+[formatter_options]
+{% for key, value in pbin_formatter_options.items() %}
+{{ key }} = "{{ value }}"
+{% endfor %}
+
+[traffic]
+limit = {{ pbin_ratelimit }}
+dir = PATH "{{ pbin_traffic_dir }}"
+{% if pbin_forwarded_header %}
+header = "{{ pbin_forwarded_header }}"
+{% endif %}
+
+[purge]
+limit = {{ pbin_purge_limit }}
+pbin_purge_batchsize = {{ pbin_purge_batchsize }}
+dir = PATH "{{ pbin_purge_dir }}"
+
+[model]
+class = {{ pbin_model_class }}
+[model_options]
+{% if pbin_model_class == 'Filesystem' %}
+dir = PATH "{{ pbin_datadir }}"
+{% elif pbin_model_class == 'Database' %}
+dsn = "{{ pbin_pdo_dsn }}"
+tbl = "{{ pbin_pdo_table }}"
+usr = "{{ pbin_pdo_user }}"
+pwd = "{{ pbin_pdo_pass }}"
+opt[12] = true
+{% endif %}
+*/

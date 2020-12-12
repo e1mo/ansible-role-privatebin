@@ -1,0 +1,15 @@
+---
+- name: Clone git repository
+  become: yes
+  become_user: "{{ pbin_user }}"
+  git:
+    repo: "{{ pbin_git_repo }}"
+    dest: "{{ pbin_path }}"
+    version: "{{ pbin_git_version }}"
+
+- name: Template conf.php
+  template:
+    src: conf.php.j2
+    dest: "{{ pbin_path }}/cfg/conf.php"
+    owner: "{{ pbin_user }}"
+    owner: "{{ pbin_group }}"
