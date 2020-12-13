@@ -1,6 +1,6 @@
 galaxy_info:
   author: "Moritz 'e1mo' Fromm"
-  description: Install and configure Privatebin 
+  description: Install and configure Privatebin
 
   issue_tracker_url: https://todo.sr.ht/~e1mo/ansible-role-privatebin/settings/access
 
@@ -34,7 +34,7 @@ galaxy_info:
     - privatebin
     - privacy
     - security
-    - one-time
+    - onetime
     - crypto
     - cryptography
     # List tags for your role here, one per line. A tag is a keyword that describes

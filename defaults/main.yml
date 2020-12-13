@@ -59,4 +59,5 @@ pbin_traffic_dir: "{{ pbin_datadir }}"
 pbin_purge_limit: 300 # minimum time between purging attempts
 pbin_purge_batchsize: 10  # maximum amount of expired pastes to delete
                           # in one purge
+
 pbin_purge_dir: "{{ pbin_datadir }}"

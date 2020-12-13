@@ -12,4 +12,5 @@
     src: conf.php.j2
     dest: "{{ pbin_path }}/cfg/conf.php"
     owner: "{{ pbin_user }}"
-    owner: "{{ pbin_group }}"
+    group: "{{ pbin_group }}"
+    mode: "0644"
