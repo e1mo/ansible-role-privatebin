@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: privatebin
   author: "Moritz 'e1mo' Fromm"
   description: Install and configure Privatebin
 
