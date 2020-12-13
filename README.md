@@ -22,6 +22,8 @@ Those are the minimal requirements for PrivateBin (as of Version 1.3.4):
 
 Taken from the [PrivateBin wiki](https://github.com/PrivateBin/PrivateBin/blob/master/INSTALL.md#installation), mostly written by [elrido](https://github.com/elrido).
 
+You systems also needs to have `git` installed for cloning the role.
+
 ## Role Variables
 
 | Variable                          	| Description                                                                                                                            	| Default                                                                                                        	|
