@@ -20,6 +20,10 @@ syntaxhighlightingtheme = "{{ pbin_syntax_theme }}"
 syntaxhighlightingtheme = "{{ pbin_notice }}"
 {% endif %}
 
+{% if pbin_fileupload_enabled %}
+cspheader = "default-src 'none'; manifest-src 'self'; connect-src * blob:; script-src 'self' 'unsafe-eval'; style-src 'self'; font-src 'self'; img-src 'self' data: blob:; media-src blob:; object-src blob:; sandbox allow-same-origin allow-scripts allow-forms allow-popups allow-modals allow-downloads"
+{% endif %}
+
 [expire]
 default = "{{ pbin_expire_default }}"
 
